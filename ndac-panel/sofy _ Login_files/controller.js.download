@@ -1,0 +1,76 @@
+window.Timer = {
+    List: {},
+
+    Add: function (id, every, reps, runner) {
+        window.Timer.List[id] = {
+            Every: every,
+            Reps: reps,
+            Runner: runner,
+            Last: Date.now()
+        }
+
+        console.log("[Timer] Registered timer " + id + ".");
+    },
+
+    Remove: function (id) {
+        delete window.Timer.List[id];
+    },
+
+    Clear: function () {
+        window.Timer.List = {};
+    },
+
+    Tick: function () {
+        for (var id in window.Timer.List) {
+            var data = window.Timer.List[id];
+
+            if (data.Last + (data.Every > 0 ? data.Every * 1000 : data.Every) <= Date.now()) {
+                data.Runner();
+                data.Last = Date.now();
+
+                if (data.Reps > 0) {
+                    data.Reps--
+
+                    if (data.Reps <= 0) {
+                        window.Timer.Remove(id);
+                    }
+                }
+            }
+        }
+    }
+}
+
+setInterval(window.Timer.Tick, 10);
+
+console.log("[Timer] Initialized.");
+
+var Core = new Proxy({}, {
+    get: function () {
+        return Reflect.get(...arguments);
+    },
+    set: function (target, prop, value) {
+        if (prop == "OnAssetsLoaded") {
+            var old_onassetsloaded = Reflect.get(target, "OnAssetsLoaded");
+            var new_onassetsloaded = value;
+
+            if (old_onassetsloaded) {
+                value = () => { new_onassetsloaded(); return old_onassetsloaded(); };
+            }
+        }
+
+        Reflect.set(target, prop, value);
+    }
+});
+
+console.log("[Core] Initialized.");
+
+$("body").ready(function() {
+    if (!window.Core.OnAssetsLoaded) return;
+    var start = Date.now();
+    window.Core.OnAssetsLoaded();
+    var end = Date.now();
+
+    console.log("[Core] Ran OnAssetsLoaded took " + (end - start) + "ms.");
+})
+
+window.Core = Core;
