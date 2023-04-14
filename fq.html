@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IDK</title>
+    <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                text-align: center;
+            }
+
+            #container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .electrode {
+                width: 150px;
+                height: 200px;
+                background-color: #e0e0e0;
+                border-radius: 5px;
+                margin: 0 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            h2 {
+                margin: 0;
+                font-size: 18px;
+            }
+
+            p {
+                margin: 0;
+                font-size: 48px;
+                font-weight: bold;
+            }
+
+            #separator {
+                width: 2px;
+                height: 200px;
+                background-color: #666;
+                margin: 0 10px;
+            }
+
+            #voltmeter {
+                width: 100px;
+                height: 100px;
+                background-color: #e0e0e0;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            #voltage {
+                font-size: 18px;
+            }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+      <div id="anode" class="electrode">
+        <h2>Anodo</h2>
+        <select id="selecionarAnodo">
+          <option value="">Seleciona o Elemento</option>
+          <option value="Cu">Cobre (Cu)</option>
+          <option value="Zn">Zinco (Zn)</option>
+          <option value="Fe2+">Ferro (II) (Fe2+)</option>
+          <option value="Fe3+">Ferro (III) (Fe3+)</option>
+          <option value="Al">Aluminio (Al)</option>
+          <option value="Mg">Magnesio (Mg)</option>
+          <option value="Ag">Prata (Ag)</option>
+          <option value="Pt">Platina (Pt)</option>
+          <option value="Au">Ouro (Au)</option>
+          <option value="Ni">Níquel (Ni)</option>
+          <option value="Pb">Chumbo (Pb)</option>
+        </select>
+    </div>
+    <div id="separator">
+
+    </div>
+    <div id="catodo" class="electrode">
+        <h2>Catodo</h2>
+        <select id="selecionarCatodo">
+          <option value="">Seleciona o Elemento</option>
+          <option value="Cu">Cobre (Cu)</option>
+          <option value="Zn">Zinco (Zn)</option>
+          <option value="Fe2+">Ferro (II) (Fe2+)</option>
+          <option value="Fe3+">Ferro (III) (Fe3+)</option>
+          <option value="Al">Aluminio (Al)</option>
+          <option value="Mg">Magnesio (Mg)</option>
+          <option value="Ag">Prata (Ag)</option>
+          <option value="Pt">Platina (Pt)</option>
+          <option value="Au">Ouro (Au)</option>
+          <option value="Ni">Níquel (Ni)</option>
+          <option value="Pb">Chumbo (Pb)</option>
+        </select>
+    </div>
+        <div id="voltmeter">
+            <h2>Voltimetro</h2>
+            <p id="voltage">0 V</p>
+        </div>
+    </div>
+
+    <script>
+      var selecionarAnodo = document.getElementById('selecionarAnodo');
+      var selecionarCatodo = document.getElementById('selecionarCatodo');
+      var voltage = document.getElementById('voltage');
+
+      var potencialEletrodo = {
+          'Cu': {'carga': 0, 'potencial': 0.34},
+          'Zn': {'carga': 0, 'potencial': -0.76},
+          'Fe2+': {'carga': 2, 'potencial': -0.44},
+          'Fe3+': {'carga': 3, 'potencial': -0.04},
+          'Al': {'carga': 0, 'potencial': -1.66},
+          'Mg': {'carga': 0, 'potencial': -2.37},
+          'Ag': {'carga': 0, 'potencial': 0.80},
+          'Pt': {'carga': 0, 'potencial': 1.20},
+          'Au': {'carga': 0, 'potencial': 1.50},
+          'Ni': {'carga': 0, 'potencial': -0.25},
+          'Pb': {'carga': 0, 'potencial': -0.13},
+          
+      };
+
+      function atualizarCargasVoltagem() {
+          var elementoAnodo = selecionarAnodo.value;
+          var elementoCatodo = selecionarCatodo.value;
+
+          var cargaAnodo = potencialEletrodo[elementoAnodo] ? potencialEletrodo[elementoAnodo].potencial : 0;
+          var cargaCatodo = potencialEletrodo[elementoCatodo] ? potencialEletrodo[elementoCatodo].potencial : 0;
+
+          var diferencaVoltagem = cargaCatodo - cargaAnodo;
+          voltage.textContent = diferencaVoltagem.toFixed(2) + ' V';
+      }
+
+      selecionarAnodo.addEventListener('change', function() {
+          atualizarCargasVoltagem();
+      });
+
+      selecionarCatodo.addEventListener('change', function() {
+          atualizarCargasVoltagem();
+      });
+
+      function resetCargasVoltagem() {
+          selecionarAnodo.value = '';
+          selecionarCatodo.value = '';
+          atualizarCargasVoltagem();
+      }
+
+      document.getElementById('voltmeter').addEventListener('click', function() {
+          resetCargasVoltagem();
+      });
+    </script>
+</body>
+</html>
