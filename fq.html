@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>IDK</title>
+    <title>Voltaico</title>
     <style>
             body {
                 font-family: Arial, sans-serif;
-                background-color: #f2f2f2;
+                background-image: url(https://bordalo.observador.pt/v2/q:84/rs:fill:2000:1126/c:2000:1126:nowe:0:63/plain/https://s3.observador.pt/wp-content/uploads/2018/05/28162237/istock-874157664.jpg);
+                
                 text-align: center;
             }
 
@@ -13,10 +14,11 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                background-color: #00000049;
                 height: 100vh;
             }
 
-            .electrode {
+            .eletrodo {
                 width: 150px;
                 height: 200px;
                 background-color: #e0e0e0;
@@ -26,6 +28,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                padding: 10px;
             }
 
             h2 {
@@ -42,15 +45,17 @@
             #separator {
                 width: 2px;
                 height: 200px;
-                background-color: #666;
+                background-color: #ffffff;
                 margin: 0 10px;
+                padding-top: 20px;
             }
 
             #voltmeter {
                 width: 100px;
                 height: 100px;
                 background-color: #e0e0e0;
-                border-radius: 50%;
+                border-radius: 10px;
+                padding: 10px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -65,41 +70,75 @@
 </head>
 <body>
     <div id="container">
-      <div id="anode" class="electrode">
+      <div id="anodo" class="eletrodo">
         <h2>Anodo</h2>
+        <br>
         <select id="selecionarAnodo">
           <option value="">Seleciona o Elemento</option>
-          <option value="Cu">Cobre (Cu)</option>
+          <option value="Li">Lítio (Li)</option>
+          <option value="K">Potássio (K)</option>
+          <option value="Ba">Bário (Ba)</option>
+          <option value="Sr">Estrôncio (Sr)</option>
+          <option value="Ca">Cálcio (Ca)</option>
+          <option value="Na">Sódio (Na)</option>
+          <option value="Mg">Magnésio (Mg)</option>
+          <option value="Be">Berílio (Be)</option>
+          <option value="Al">Alumínio (Al)</option>
+          <option value="Mn">Manganês (Mn)</option>
           <option value="Zn">Zinco (Zn)</option>
-          <option value="Fe2+">Ferro (II) (Fe2+)</option>
-          <option value="Fe3+">Ferro (III) (Fe3+)</option>
-          <option value="Al">Aluminio (Al)</option>
-          <option value="Mg">Magnesio (Mg)</option>
-          <option value="Ag">Prata (Ag)</option>
-          <option value="Pt">Platina (Pt)</option>
-          <option value="Au">Ouro (Au)</option>
+          <option value="Cr">Cromo (Cr)</option>
+          <option value="Fe">Ferro (Fe)</option>
+          <option value="Cd">Cádmio (Cd)</option>
+          <option value="Co">Cobalto (Co)</option>
           <option value="Ni">Níquel (Ni)</option>
+          <option value="Sn">Estanho (Sn)</option>
           <option value="Pb">Chumbo (Pb)</option>
+          <option value="H">Hidrogénio (H)</option>
+          <option value="Sn2+">Estanho (Sn2+)</option>
+          <option value="Cu+">Cobre (Cu+)</option>
+          <option value="Cu">Cobre (Cu)</option>
+          <option value="Fe2+">Ferro (Fe2+)</option>
+          <option value="Ag">Prata (Ag)</option>
+          <option value="Au">Ouro (Au)</option>
+          <option value="Ce3+">Cério (Ce3+)</option>
+          <option value="Co2+">Cobalto (Co2+)</option>
         </select>
     </div>
     <div id="separator">
 
     </div>
-    <div id="catodo" class="electrode">
+    <div id="catodo" class="eletrodo">
         <h2>Catodo</h2>
+        <br>
         <select id="selecionarCatodo">
-          <option value="">Seleciona o Elemento</option>
-          <option value="Cu">Cobre (Cu)</option>
-          <option value="Zn">Zinco (Zn)</option>
-          <option value="Fe2+">Ferro (II) (Fe2+)</option>
-          <option value="Fe3+">Ferro (III) (Fe3+)</option>
-          <option value="Al">Aluminio (Al)</option>
-          <option value="Mg">Magnesio (Mg)</option>
-          <option value="Ag">Prata (Ag)</option>
-          <option value="Pt">Platina (Pt)</option>
-          <option value="Au">Ouro (Au)</option>
-          <option value="Ni">Níquel (Ni)</option>
-          <option value="Pb">Chumbo (Pb)</option>
+            <option value="">Seleciona o Elemento</option>
+            <option value="Li">Lítio (Li)</option>
+            <option value="K">Potássio (K)</option>
+            <option value="Ba">Bário (Ba)</option>
+            <option value="Sr">Estroncio (Sr)</option>
+            <option value="Ca">Cálcio (Ca)</option>
+            <option value="Na">Sódio (Na)</option>
+            <option value="Mg">Magnésio (Mg)</option>
+            <option value="Be">Berílio (Be)</option>
+            <option value="Al">Alumínio (Al)</option>
+            <option value="Mn">Manganês (Mn)</option>
+            <option value="Zn">Zinco (Zn)</option>
+            <option value="Cr">Cromo (Cr)</option>
+            <option value="Fe">Ferro (Fe)</option>
+            <option value="Cd">Cádmio (Cd)</option>
+            <option value="Co">Cobalto (Co)</option>
+            <option value="Ni">Níquel (Ni)</option>
+            <option value="Sn">Estanho (Sn)</option>
+            <option value="Pb">Chumbo (Pb)</option>
+            <option value="H">Hidrogénio (H)</option>
+            <option value="Sn2+">Estanho (Sn2+)</option>
+            <option value="Cu+">Cobre (Cu+)</option>
+            <option value="Cu">Cobre (Cu)</option>
+            <option value="Fe2+">Ferro (Fe2+)</option>
+            <option value="Ag">Prata (Ag)</option>
+            <option value="Au">Ouro (Au)</option>
+            <option value="Ce3+">Cério (Ce3+)</option>
+            <option value="Co2+">Cobalto (Co2+)</option>
         </select>
     </div>
         <div id="voltmeter">
@@ -114,17 +153,33 @@
       var voltage = document.getElementById('voltage');
 
       var potencialEletrodo = {
-          'Cu': {'carga': 0, 'potencial': 0.34},
-          'Zn': {'carga': 0, 'potencial': -0.76},
-          'Fe2+': {'carga': 2, 'potencial': -0.44},
-          'Fe3+': {'carga': 3, 'potencial': -0.04},
-          'Al': {'carga': 0, 'potencial': -1.66},
+          'Li': {'carga': 0, 'potencial': -3.05},
+          'K': {'carga': 0, 'potencial': -2.93},
+          'Ba': {'carga': 0, 'potencial': -2.90},
+          'Sr': {'carga': 0, 'potencial': -2.89},
+          'Ca': {'carga': 0, 'potencial': -2.87},
+          'Na': {'carga': 0, 'potencial': -2.71},
           'Mg': {'carga': 0, 'potencial': -2.37},
-          'Ag': {'carga': 0, 'potencial': 0.80},
-          'Pt': {'carga': 0, 'potencial': 1.20},
-          'Au': {'carga': 0, 'potencial': 1.50},
-          'Ni': {'carga': 0, 'potencial': -0.25},
+          'Be': {'carga': 0, 'potencial': -1.85},
+          'Al': {'carga': 0, 'potencial': -1.66},
+          'Mn': {'carga': 0, 'potencial': -1.18},
+          'Zn': {'carga': 0, 'potencial': -0.76},
+          'Cr': {'carga': 0, 'potencial': -0.74},
+          'Fe': {'carga': 0, 'potencial': -0.44},
+          'Cd': {'carga': 0, 'potencial': -0.40},
+          'Co': {'carga': 0, 'potencial': -0.28},
+          'Ni': {'carga': 0, 'potencial': 0.25},
+          'Sn': {'carga': 0, 'potencial': -0.14},
           'Pb': {'carga': 0, 'potencial': -0.13},
+          'H': {'carga': 0, 'potencial': 0.0},
+          'Sn2+': {'carga': 0, 'potencial': 0.13},
+          'Cu+': {'carga': 0, 'potencial': 0.15},
+          'Cu': {'carga': 0, 'potencial': 0.34},
+          'Fe2+': {'carga': 2, 'potencial': 0.77},
+          'Ag': {'carga': 0, 'potencial': 0.80},
+          'Au': {'carga': 0, 'potencial': 1.36},
+          'Ce3+': {'carga': 3, 'potencial': 1.61},
+          'Co2+': {'carga': 2, 'potencial': 1.77},
           
       };
 
